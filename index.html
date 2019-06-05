@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bedrock Block/Item Generator</title>
+    </head>
+    <body>
+        <div id="generic-settings">
+            <ul>
+                <li>
+                    <label>Identifier: </label><input type="text" placeholder="Enter your item's identifier...">
+                </li>
+                <li>
+                    <label>Is Experimental: </label><input type="text" placeholder="Enter your item's identifier...">
+                </li>
+                <li>
+                    <label>Type:</label>
+                    <select id="type" onchange="showSettings()">
+                        <option value="item">Item</option>
+                        <option value="block">Block</option>
+                    </select>
+                </li>
+            </ul>
+        </div>
+
+        <div id="item-settings">
+            <h2>Item Settings</h2>
+            <ul>
+                <li>
+                    <label>Places Block: </label><input type="text" placeholder="Block identifier to place"> 
+                </li>
+                <li>
+                    <label>Enchanted Glint: </label><input type="checkbox">
+                </li>
+                <li>
+                    <label>Max Damage: </label><input type="number" placeholder="The amount of damage the item does"> 
+                </li>
+                <li>
+                    <label>Max Stack Size: </label><input type="number" placeholder="How much the item can be stacked upon"> 
+                </li>
+                <li>
+                    <label>Stacked by data: </label><input type="checkbox">
+                </li>
+                <li>
+                    <label>Use Duration: </label><input type="number" placeholder="The amount of time it takes to use the item"> 
+                </li>
+            </ul>
+        </div>
+        <div id="block-settings" style="display: none;">
+            <h2>Block Settings</h2>
+            <ul>
+                <li>
+                    <label>Loot Table: </label><input type="text" placeholder="Loot table for the block">
+                </li>
+                <li>
+                    <label>Destroy Time: </label><input type="number" placeholder="Amount of seconds it takes for the block to be destroyed">
+                </li>
+                <li>
+                    <label>Explosion Resistance: </label><input type="number" placeholder="Block's resistance to explosions">
+                </li>
+                <li>
+                    <label>Friction: </label><input type="number" placeholder="Block's friction">
+                </li>
+                <li>
+                    <label>Map Color: </label><input type="color">
+                </li>
+                <li>
+                    <label>Light Absorption: </label><input type="number" placeholder="Amount of light this block absobs">
+                </li>
+                <li>
+                        <label>Light Emission: </label><input type="number" placeholder="Amount of light this block emits">
+                </li>
+            </ul>
+        </div>
+    </body>
+    <script type="text/javascript">
+        let itemSettings = document.getElementById("item-settings");
+        let blockSettings = document.getElementById("block-settings");
+
+        let type = document.getElementById("type");
+
+        function showSettings() {
+            if (type.options[type.selectedIndex].value === "item") {
+                itemSettings.style = "dispaly: block;"
+                blockSettings.style = "display: none;"
+            }
+            else {
+                blockSettings.style = "display: block;"
+                itemSettings.style = "display: none;"
+            }
+        }
+
+    </script>
+</html>
