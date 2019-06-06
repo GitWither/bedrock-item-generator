@@ -32,10 +32,59 @@
                     <label>Enchanted Glint: </label><input type="checkbox">
                 </li>
                 <li>
+                    <label>Is Food: </label><input type="checkbox" id="is-food" onclick="updateFood()">
+                </li>
+                <li id="food-settings" style="display: none;">
+                    <div>
+                        <ul>
+                            <li>
+                                <label>Nutrition: </label><input type="number" placeholder="How many food points are gained when the item is eaten">
+                            </li>
+                            <li>
+                                <label>Can always eat: </label><input type="checkbox">
+                            </li>
+                            <li>
+                                <label>When eaten, convert to: </label><input type="text" placeholder="ID of the item to convert to">
+                            </li>
+                            <li>
+                                <label>Saturation modifier: </label>
+                                <select id="saturation-modifier">
+                                    <option value="low">Low</option>
+                                    <option value="normal">Normal</option>
+                                    <option value="good">Good</option>
+                                    <option value="high">High</option>
+                                    <option value="supernatural">Supernatural</option>
+                                </select>
+                            </li>
+                            <li>
+                                <label>Is meat: </label><input type="checkbox">
+                            </li>
+                            <li>
+                                <label>Action on use: </label><input type="text" placeholder="ID of the item to convert to">
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <label>Is Hand Equipped: </label><input type="checkbox">
+                </li>
+                <li>
                     <label>Max Damage: </label><input type="number" placeholder="The amount of damage the item does"> 
                 </li>
                 <li>
                     <label>Max Stack Size: </label><input type="number" placeholder="How much the item can be stacked upon"> 
+                </li>
+                <li>
+                    <label>Is Crop: </label><input type="checkbox" id="is-crop" onclick="updateCrop()">
+                </li>
+                <li id="crop-settings" style="display: none;">
+                    <div>
+                        <ul>
+                            <li>
+                                <label>Crop: </label><input type="text" placeholder="ID of the crop this item places">
+                            </li>
+                        </ul>
+                    </div>
                 </li>
                 <li>
                     <label>Stacked by data: </label><input type="checkbox">
@@ -61,6 +110,21 @@
                     <label>Friction: </label><input type="number" placeholder="Block's friction">
                 </li>
                 <li>
+                    <label>Flammable: </label><input id="flammable" type="checkbox" onclick="updateFlammable()">
+                </li>
+                <li id="flammable-settings" style="display: none;">
+                    <div>
+                        <ul>
+                            <li>
+                                <label>Flame odds: </label><input type="number" placeholder="How likely the block will catch fire">     
+                            </li>
+                            <li>
+                                <label>Burn odds: </label><input type="number" placeholder="How likely the block will be destroyed by fire">
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
                     <label>Map Color: </label><input type="color">
                 </li>
                 <li>
@@ -71,10 +135,15 @@
                 </li>
             </ul>
         </div>
+        <button>Generate</button>
     </body>
     <script type="text/javascript">
         let itemSettings = document.getElementById("item-settings");
         let blockSettings = document.getElementById("block-settings");
+
+        let flammableSettings = document.getElementById("flammable-settings");
+        let foodSettings = document.getElementById("food-settings")
+        let cropSettings = document.getElementById("crop-settings");
 
         let type = document.getElementById("type");
 
@@ -86,6 +155,33 @@
             else {
                 blockSettings.style = "display: block;"
                 itemSettings.style = "display: none;"
+            }
+        }
+
+        function updateFlammable() {
+            if (document.getElementById("flammable").checked) {
+                flammableSettings.style = "display: block";
+            }
+            else {
+                flammableSettings.style = "display: none;";
+            }
+        }
+
+        function updateFood() {
+            if (document.getElementById("is-food").checked) {
+                foodSettings.style = "display: block;"
+            }
+            else {
+                foodSettings.style = "display: none;"
+            }
+        }
+
+        function updateCrop() {
+            if (document.getElementById("is-crop").checked) {
+                cropSettings.style = "display: block;"
+            }
+            else {
+                cropSettings.style = "display: none;"
             }
         }
 
