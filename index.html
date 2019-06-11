@@ -19,6 +19,9 @@
                         <option value="block">Block</option>
                     </select>
                 </li>
+                <li>
+                    <label>Texture path: </label><input type="text" placeholder="The path to your item's/block's texture relative to the pack" id="texture-path">
+                </li>
             </ul>
         </div>
 
@@ -152,7 +155,7 @@
                     <label>Map Color: </label><input type="color" id="map-color">
                 </li>
                 <li>
-                    <label>Light Absorption: </label><input type="number" placeholder="Amount of light this block absobs" id="light-absorption">
+                    <label>Light Absorption: </label><input type="number" placeholder="Amount of light this block absorbs" id="light-absorption">
                 </li>
                 <li>
                     <label>Light Emission: </label><input type="number" placeholder="Amount of light this block emits" id="light-emission">
@@ -193,6 +196,7 @@
 
         let identifier = document.getElementById("identifier");
         let isExperimental = document.getElementById("is-experimental")
+        let texturePath = document.getElementById("texture-path");
 
         //item settings
         let itemCategory = document.getElementById("item-category");
@@ -344,7 +348,7 @@
 
                 let textureAtlas = {
                     [identifier.value.substring(identifier.value.indexOf(":") + 1)]: {
-                        "textures": ""
+                        "textures": texturePath.value
                     }
                 }
 
@@ -405,7 +409,7 @@
 
                 let atlas = {
                     [identifier.value.substring(identifier.value.indexOf(":") + 1)]: {
-                        "textures": ""
+                        "textures": texturePath.value
                     }
                 }
 
