@@ -7,10 +7,10 @@
         <div id="generic-settings">
             <ul>
                 <li>
-                    <label>Identifier: </label><input type="text" placeholder="Enter your item's identifier...">
+                    <label>Identifier: </label><input type="text" placeholder="Enter your item's identifier..." id="identifier">
                 </li>
                 <li>
-                    <label>Is Experimental: </label><input type="text" placeholder="Enter your item's identifier...">
+                    <label>Is Experimental: </label><input type="checkbox" id="is-experimental">
                 </li>
                 <li>
                     <label>Type:</label>
@@ -26,10 +26,31 @@
             <h2>Item Settings</h2>
             <ul>
                 <li>
-                    <label>Places Block: </label><input type="text" placeholder="Block identifier to place"> 
+                    <label>Item Category: </label>
+                    <select id="item-category">
+                        <option value="Nature">Nature</option>
+                    </select>
                 </li>
                 <li>
-                    <label>Enchanted Glint: </label><input type="checkbox">
+                    <label>Use Animation: </label>
+                    <select id="use-animation">
+                        <option value="none">None</option>
+                        <option value="eat">Eating</option>
+                        <option value="camera">Camera</option>
+                    </select>
+                </li>
+                <li>
+                    <label>Hover Text Color: </label>
+                    <select id="hover-text-color">
+                        <option value="none">None</option>
+                        <option value="light_purple">Light Purple</option>
+                    </select>
+                </li>
+                <li>
+                    <label>Places Block: </label><input type="text" placeholder="Block identifier to place" id="places-block"> 
+                </li>
+                <li>
+                    <label>Is Enchanted: </label><input type="checkbox" id="enchant-glint">
                 </li>
                 <li>
                     <label>Is Food: </label><input type="checkbox" id="is-food" onclick="updateFood()">
@@ -38,17 +59,17 @@
                     <div>
                         <ul>
                             <li>
-                                <label>Nutrition: </label><input type="number" placeholder="How many food points are gained when the item is eaten">
+                                <label>Nutrition: </label><input type="number" placeholder="How many food points are gained when the item is eaten" id="nutrition">
                             </li>
                             <li>
-                                <label>Can always eat: </label><input type="checkbox">
+                                <label>Can always eat: </label><input type="checkbox" id="can-always-eat">
                             </li>
                             <li>
-                                <label>When eaten, convert to: </label><input type="text" placeholder="ID of the item to convert to">
+                                <label>When eaten, convert to: </label><input type="text" placeholder="ID of the item to convert to" id="convert-to">
                             </li>
                             <li>
                                 <label>Saturation modifier: </label>
-                                <select id="saturation-modifier">
+                                <select id="saturation-modifier" id="saturation-modifier">
                                     <option value="low">Low</option>
                                     <option value="normal">Normal</option>
                                     <option value="good">Good</option>
@@ -57,22 +78,22 @@
                                 </select>
                             </li>
                             <li>
-                                <label>Is meat: </label><input type="checkbox">
+                                <label>Is meat: </label><input type="checkbox" id="is-meat">
                             </li>
                             <li>
-                                <label>Action on use: </label><input type="text" placeholder="ID of the item to convert to">
+                                <label>Action on use: </label><input type="text" placeholder="Action on item use" id="use-action">
                             </li>
                         </ul>
                     </div>
                 </li>
                 <li>
-                    <label>Is Hand Equipped: </label><input type="checkbox">
+                    <label>Is Hand Equipped: </label><input type="checkbox" id="is-hand-equipped">
                 </li>
                 <li>
-                    <label>Max Damage: </label><input type="number" placeholder="The amount of damage the item does"> 
+                    <label>Max Damage: </label><input type="number" placeholder="The amount of damage the item does" id="max-damage"> 
                 </li>
                 <li>
-                    <label>Max Stack Size: </label><input type="number" placeholder="How much the item can be stacked upon"> 
+                    <label>Max Stack Size: </label><input type="number" placeholder="How much the item can be stacked upon" id="max-stack-size"> 
                 </li>
                 <li>
                     <label>Is Crop: </label><input type="checkbox" id="is-crop" onclick="updateCrop()">
@@ -81,16 +102,16 @@
                     <div>
                         <ul>
                             <li>
-                                <label>Crop: </label><input type="text" placeholder="ID of the crop this item places">
+                                <label>Crop: </label><input type="text" placeholder="ID of the crop this item places" id="crop-id">
                             </li>
                         </ul>
                     </div>
                 </li>
                 <li>
-                    <label>Stacked by data: </label><input type="checkbox">
+                    <label>Stacked by data: </label><input type="checkbox" id="stacked-by-data">
                 </li>
                 <li>
-                    <label>Use Duration: </label><input type="number" placeholder="The amount of time it takes to use the item"> 
+                    <label>Use Duration: </label><input type="number" placeholder="The amount of time it takes to use the item" id="use-duration"> 
                 </li>
             </ul>
         </div>
@@ -98,16 +119,19 @@
             <h2>Block Settings</h2>
             <ul>
                 <li>
-                    <label>Loot Table: </label><input type="text" placeholder="Loot table for the block">
+                    <label>Register to creative menu: </label><input type="checkbox" id="register-creative">
                 </li>
                 <li>
-                    <label>Destroy Time: </label><input type="number" placeholder="Amount of seconds it takes for the block to be destroyed">
+                    <label>Loot Table: </label><input type="text" placeholder="Loot table for the block" id="loottable">
                 </li>
                 <li>
-                    <label>Explosion Resistance: </label><input type="number" placeholder="Block's resistance to explosions">
+                    <label>Destroy Time: </label><input type="number" placeholder="Amount of seconds it takes for the block to be destroyed" id="destroy-time">
                 </li>
                 <li>
-                    <label>Friction: </label><input type="number" placeholder="Block's friction">
+                    <label>Explosion Resistance: </label><input type="number" placeholder="Block's resistance to explosions" id="explosion-resistance">
+                </li>
+                <li>
+                    <label>Friction: </label><input type="number" placeholder="Block's friction" id="friction">
                 </li>
                 <li>
                     <label>Flammable: </label><input id="flammable" type="checkbox" onclick="updateFlammable()">
@@ -116,28 +140,48 @@
                     <div>
                         <ul>
                             <li>
-                                <label>Flame odds: </label><input type="number" placeholder="How likely the block will catch fire">     
+                                <label>Flame odds: </label><input type="number" placeholder="How likely the block will catch fire" id="flame-odds">
                             </li>
                             <li>
-                                <label>Burn odds: </label><input type="number" placeholder="How likely the block will be destroyed by fire">
+                                <label>Burn odds: </label><input type="number" placeholder="How likely the block will be destroyed by fire" id="burn-odds">
                             </li>
                         </ul>
                     </div>
                 </li>
                 <li>
-                    <label>Map Color: </label><input type="color">
+                    <label>Map Color: </label><input type="color" id="map-color">
                 </li>
                 <li>
-                    <label>Light Absorption: </label><input type="number" placeholder="Amount of light this block absobs">
+                    <label>Light Absorption: </label><input type="number" placeholder="Amount of light this block absobs" id="light-absorption">
                 </li>
                 <li>
-                        <label>Light Emission: </label><input type="number" placeholder="Amount of light this block emits">
+                    <label>Light Emission: </label><input type="number" placeholder="Amount of light this block emits" id="light-emission">
                 </li>
             </ul>
         </div>
-        <button>Generate</button>
+        <button onclick="generate()">Generate</button>
+        <div>
+            <h2>Behavior Pack</h2>
+            <p>Paste this into your behavior item definition file!</p>
+            <textarea id="behavior-result" readonly></textarea>
+            <button onclick="behaviorResult.select();document.execCommand('copy')">Copy</button>
+
+            <h2>Resource Pack</h2>
+            <p>Paste this into your resource item definition file! (blocks.json if it's a block)</p>
+            <textarea id="resource-result" readonly></textarea>
+            <button onclick="resourceResult.select();document.execCommand('copy')">Copy</button>
+
+            <h2>Texture Atlas</h2>
+            <p>Paste this into your texture atlas!</p>
+            <textarea id="texture-atlas-result" readonly></textarea>
+            <button onclick="atlasResult.select();document.execCommand('copy')">Copy</button>
+        </div>
     </body>
     <script type="text/javascript">
+        let behaviorResult = document.getElementById("behavior-result");
+        let resourceResult = document.getElementById("resource-result");
+        let atlasResult = document.getElementById("texture-atlas-result");
+
         let itemSettings = document.getElementById("item-settings");
         let blockSettings = document.getElementById("block-settings");
 
@@ -146,6 +190,40 @@
         let cropSettings = document.getElementById("crop-settings");
 
         let type = document.getElementById("type");
+
+        let identifier = document.getElementById("identifier");
+        let isExperimental = document.getElementById("is-experimental")
+
+        //item settings
+        let itemCategory = document.getElementById("item-category");
+        let useAnimation = document.getElementById("use-animation");
+        let hoverTextColor = document.getElementById("hover-text-color");
+        let placesBlock = document.getElementById("places-block");
+        let foil = document.getElementById("enchant-glint");
+        let nutrition = document.getElementById("nutrition");
+        let canAlwaysEat = document.getElementById("can-always-eat");
+        let convertTo = document.getElementById("convert-to");
+        let saturationModifier = document.getElementById("saturation-modifier");
+        let isMeat = document.getElementById("is-meat");
+        let useAction = document.getElementById("use-action");
+        let isHandEquipped = document.getElementById("is-hand-equipped");
+        let maxDamage = document.getElementById("max-damage");
+        let maxStackSize = document.getElementById("max-stack-size");
+        let cropId = document.getElementById("crop-id");
+        let stackedByData = document.getElementById("stacked-by-data");
+        let useDuration = document.getElementById("use-duration");
+
+        //block settings
+        let registerCreative = document.getElementById("register-creative");
+        let loottable = document.getElementById("loottable");
+        let destroyTime = document.getElementById("destroy-time");
+        let explosionResistance = document.getElementById("explosion-resistance");
+        let friction = document.getElementById("friction");
+        let flameOdds = document.getElementById("flame-odds");
+        let burnOdds = document.getElementById("burn-odds");
+        let mapColor = document.getElementById("map-color");
+        let lightAbsorption = document.getElementById("light-absorption");
+        let lightEmission = document.getElementById("light-emission");
 
         function showSettings() {
             if (type.options[type.selectedIndex].value === "item") {
@@ -185,5 +263,155 @@
             }
         }
 
+        function generate() {
+            if (type.options[type.selectedIndex].value === "item") {
+                let behavior = {
+                    "format_version": "1.10",
+                    "minecraft:item": {
+                        "description": {
+                            "identifier": identifier.value,
+                            "is_experimental": isExperimental.checked
+                        },
+                        "components": {
+                        }
+                    }
+                }
+                if (placesBlock.value != "") {
+                    behavior["minecraft:item"].components = Object.assign({"minecraft:block": placesBlock.value}, behavior["minecraft:item"].components)
+                }
+                if (foil.checked) {
+                    behavior["minecraft:item"].components = Object.assign({"minecraft:foil": foil.checked}, behavior["minecraft:item"].components)
+                }
+                if (document.getElementById("is-food").checked) {
+                    behavior["minecraft:item"].components = Object.assign({"minecraft:food": {}}, behavior["minecraft:item"].components)
+                    if (nutrition.value != "") {
+                        behavior["minecraft:item"].components["minecraft:food"] = Object.assign({"nutrition": parseInt(nutrition.value)}, behavior["minecraft:item"].components["minecraft:food"])
+                    }
+                    if (canAlwaysEat.checked) {
+                        behavior["minecraft:item"].components["minecraft:food"] = Object.assign({"can_always_eat": canAlwaysEat.checked}, behavior["minecraft:item"].components["minecraft:food"])
+                    }
+                    if (convertTo.value != "") {
+                        behavior["minecraft:item"].components["minecraft:food"] = Object.assign({"using_converts_to": convertTo.value}, behavior["minecraft:item"].components["minecraft:food"])
+                    }
+                    behavior["minecraft:item"].components["minecraft:food"] = Object.assign({"saturation_modifier": saturationModifier.options[saturationModifier.selectedIndex].value}, behavior["minecraft:item"].components["minecraft:food"])
+                    behavior["minecraft:item"].components["minecraft:food"] = Object.assign({"is_meat": isMeat.checked}, behavior["minecraft:item"].components["minecraft:food"])
+                    if (useAction.value != "") {
+                        behavior["minecraft:item"].components["minecraft:food"] = Object.assign({"on_use_action": useAction.value}, behavior["minecraft:item"].components["minecraft:food"])
+                    }
+                }
+                if (isHandEquipped.checked) {
+                    behavior["minecraft:item"].components = Object.assign({"minecraft:hand_equipped": isHandEquipped.checked}, behavior["minecraft:item"].components)
+                }
+                if (maxDamage.value != "") {
+                    behavior["minecraft:item"].components = Object.assign({"minecraft:max_damage": parseInt(maxDamage.value)}, behavior["minecraft:item"].components)
+                }
+                if (maxStackSize.value != "") {
+                    behavior["minecraft:item"].components = Object.assign({"minecraft:max_stack_size": parseInt(maxStackSize.value)}, behavior["minecraft:item"].components)
+                }
+                if (document.getElementById("is-crop").checked) {
+                    behavior["minecraft:item"].components = Object.assign({"minecraft:seed": {}}, behavior["minecraft:item"].components)
+                    if (cropId.value != "") {
+                        behavior["minecraft:item"].components["minecraft:seed"] = Object.assign({"crop_result": cropId.value}, behavior["minecraft:item"].components["minecraft:seed"])
+                    }
+                }
+                if (stackedByData.checked) {
+                    behavior["minecraft:item"].components = Object.assign({"minecraft:stacked_by_data": stackedByData.checked}, behavior["minecraft:item"].components)
+                }
+                if (useDuration.value != "") {
+                    behavior["minecraft:item"].components = Object.assign({"minecraft:use_duration": parseInt(useDuration.value)}, behavior["minecraft:item"].components)
+                }
+                behaviorResult.value = JSON.stringify(behavior, null, 4);
+
+                let resource = {
+                    "format_version": "1.10",
+                    "minecraft:item": {
+                        "description": {
+                            "identifier": identifier.value,
+                            "category": itemCategory.options[itemCategory.selectedIndex].value
+                        },
+                        "components": {
+                            "minecraft:icon": identifier.value.substring(identifier.value.indexOf(":") + 1),
+                        }
+                    }
+                }
+                if (useAnimation.options[useAnimation.selectedIndex].value !== "none") {
+                    resource["minecraft:item"].components = Object.assign({"minecraft:use_animation": useAnimation.options[useAnimation.selectedIndex].value}, resource["minecraft:item"].components);
+                }
+                if (hoverTextColor.options[hoverTextColor.selectedIndex].value !== "none") {
+                    resource["minecraft:item"].components = Object.assign({"minecraft:hover_text_color": hoverTextColor.options[hoverTextColor.selectedIndex].value}, resource["minecraft:item"].components);
+                }
+                resourceResult.value = JSON.stringify(resource, null, 4);
+
+                let textureAtlas = {
+                    [identifier.value.substring(identifier.value.indexOf(":") + 1)]: {
+                        "textures": ""
+                    }
+                }
+
+                atlasResult.value = JSON.stringify(textureAtlas, null, 4);
+            }
+            else {
+                let behavior = {
+                    "format_version": "1.10",
+                    "minecraft:block": {
+                        "description": {
+                            "identifier": identifier.value,
+                            "is_experimental": isExperimental.checked,
+                            "register_to_creative_menu": registerCreative.checked
+                        },
+                        "components": {
+
+                        }
+                    }
+                }
+
+                if (loottable.value !== "") {
+                    behavior["minecraft:block"].components = Object.assign({"minecraft:loot": {"table": loottable.value}}, behavior["minecraft:block"].components);
+                }
+                if (destroyTime.value !== "") {
+                    behavior["minecraft:block"].components = Object.assign({"minecraft:destroy_time": {"value": parseFloat(destroyTime.value)}}, behavior["minecraft:block"].components);
+                }
+                if (explosionResistance.value !== "") {
+                    behavior["minecraft:block"].components = Object.assign({"minecraft:explosion_resistance": {"value": parseFloat(explosionResistance.value)}}, behavior["minecraft:block"].components);
+                }
+                if (friction.value !== "") {
+                    behavior["minecraft:block"].components = Object.assign({"minecraft:friction": {"value": parseFloat(friction.value)}}, behavior["minecraft:block"].components);
+                }
+                if (document.getElementById("flammable").checked) {
+                    behavior["minecraft:block"].components = Object.assign({"minecraft:flammable": {}}, behavior["minecraft:block"].components);
+                    if (flameOdds.value !== "") {
+                        behavior["minecraft:block"].components["minecraft:flammable"] = Object.assign({"flame_odds": parseInt(flameOdds.value)}, behavior["minecraft:block"].components["minecraft:flammable"]);
+                    }
+                    if (burnOdds.value !== "") {
+                        behavior["minecraft:block"].components["minecraft:flammable"] = Object.assign({"burn_odds": parseInt(burnOdds.value)}, behavior["minecraft:block"].components["minecraft:flammable"]);
+                    }
+                }
+                behavior["minecraft:block"].components = Object.assign({"minecraft:map_color": {"color": mapColor.value}}, behavior["minecraft:block"].components);
+                if (lightAbsorption.value !== "") {
+                    behavior["minecraft:block"].components = Object.assign({"minecraft:block_light_absorption": {"value": parseInt(lightAbsorption.value)}}, behavior["minecraft:block"].components);
+                }
+                if (lightEmission.value !== "") {
+                    behavior["minecraft:block"].components = Object.assign({"minecraft:block_light_emission": {"value": parseFloat(lightEmission.value)}}, behavior["minecraft:block"].components);
+                }
+
+                behaviorResult.value = JSON.stringify(behavior, null, 4);
+
+                let resource = {
+                    [identifier.value]: {
+                        "textures": identifier.value.substring(identifier.value.indexOf(":") + 1)
+                    }
+                }
+                resourceResult.value = JSON.stringify(resource, null, 4);
+
+                let atlas = {
+                    [identifier.value.substring(identifier.value.indexOf(":") + 1)]: {
+                        "textures": ""
+                    }
+                }
+
+
+                atlasResult.value = JSON.stringify(atlas, null, 4);
+            }
+        }
     </script>
 </html>
