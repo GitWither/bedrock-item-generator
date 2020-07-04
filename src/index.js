@@ -266,11 +266,12 @@ function generate() {
         resourceResult.value = JSON.stringify(resource, null, 4);
 
         let textureAtlas = {
-            [identifier.value.substring(identifier.value.indexOf(":") + 1)]: {
-                "textures": texturePath.value
+            "texture_data": {
+                [identifier.value.substring(identifier.value.indexOf(":") + 1)]: {
+                    "textures": texturePath.value
+                }
             }
         }
-
         atlasResult.value = JSON.stringify(textureAtlas, null, 4);
 
         let langResult = `item.${identifier.value}.name=${translatedName.value}`;
